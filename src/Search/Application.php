@@ -87,7 +87,7 @@ class Application extends Base
      * @throws BadResponseException
      */
     public function updateSort(array $fields, string $index = null) {
-        return $this->updateAttr('sort', $fields, $index);
+        return $this->updateAttr('Sort', $fields, $index);
     }
 
     /**
@@ -99,7 +99,19 @@ class Application extends Base
      * @throws BadResponseException
      */
     public function updateFilter(array $fields, string $index = null) {
-        return $this->updateAttr('filter', $fields, $index);
+        return $this->updateAttr('Filter', $fields, $index);
+    }
+
+    /**
+     * 更新搜索字段
+     *
+     * @param array $fields
+     * @param string|null $index
+     * @return array
+     * @throws BadResponseException
+     */
+    public function updateSearchable(array $fields, string $index = null) {
+        return $this->updateAttr('Searchable', $fields, $index);
     }
 
     /**
@@ -111,10 +123,10 @@ class Application extends Base
      * @return array
      * @throws BadResponseException
      */
-    public function updateAttr(string $type, array $fields, string $index = null) {
+    private function updateAttr(string $type, array $fields, string $index = null) {
         $index = $this->getIndex($index);
 
-        $api = $type == 'sort' ? $this->getApi('searchSort') : $this->getApi('searchFilter');
+        $api = $this->getApi('search' . $type);
 
         $res = $this->request($api, [
             'json' => compact('fields', 'index'),

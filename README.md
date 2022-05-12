@@ -53,7 +53,16 @@ $client->update($data);
 // 指定索引
 $client->update($data, 'post');
 
-// 5.更新可查询字段
+// 5.更新全文搜索可搜索字段
+// 数据写入后全文搜索默认会搜索全部字段，如果要指定字段，需要更新可搜索字段
+// 字段格式为数组，请确保数组中的字段是数据中存在的字段
+$fields = ['title'];
+// 默认索引
+$client->updateSearchable($fields);
+// 指定索引
+$client->updateSearchable($fields, 'post');
+
+// 6.更新可查询字段
 // 数据写入后默认只能全文搜索，如果要指定查询条件，需要先更新可查询字段
 // 字段格式为数组，请确保数组中的字段是数据中存在的字段
 $fields = ['id', 'tags'];
@@ -62,7 +71,7 @@ $client->updateFilter($fields);
 // 指定索引
 $client->updateFilter($fields, 'post');
 
-// 6.更新可排序字段
+// 7.更新可排序字段
 // 数据写入后默认无法自定义排序规则，如果要指定排序规则，需要先更新可排序字段
 // 字段格式为数组，请确保数组中的字段是数据中存在的字段
 $fields = ['id', 'tags'];
@@ -71,7 +80,7 @@ $client->updateSort($fields);
 // 指定索引
 $client->updateSort($fields, 'post');
 
-// 7.删除数据
+// 8.删除数据
 // 数据格式为数组，即要删除的主键集合
 $ids = [1];
 // 默认索引
@@ -79,14 +88,14 @@ $client->del($ids);
 // 指定索引
 $client->del($ids, 'post');
 
-// 8.删除索引
+// 9.删除索引
 // 删除索引和索引内的全部内容，此操作不可撤销，谨慎使用
 // 默认索引
 $client->clear();
 // 指定索引
 $client->clear('post');
 
-// 8.搜索
+// 10.搜索
 // 参数说明
 // $keyword 查询关键词
 // $condition 查询条件，写法参考 https://docs.meilisearch.com/learn/advanced/filtering_and_faceted_search.html#using-filters

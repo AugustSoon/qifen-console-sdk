@@ -20,6 +20,7 @@ trait Utils
         'searchUpdate' => 'search/update',
         'searchSort' => 'search/update/sort',
         'searchFilter' => 'search/update/filter',
+        'searchSearchable' => 'search/update/searchable',
         'searchDel' => 'search/del',
         'searchClear' => 'search/clear',
     ];
