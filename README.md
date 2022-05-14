@@ -275,3 +275,43 @@ $client = new Application($config);
 // $path 转换完成后的保存路径
 $token = $client->getUploadToken('/save_path');
 ```
+
+### 采集
+
+> 采集类型
+>
+> 1. chrome
+>> 返回抓取到的所有 html
+>
+> 2. body
+>> 返回抓取到的 body 部分
+>
+> 3. 节点类名 / 节点ID
+>> 返回指定的节点部分，例如：.post #post
+>
+> 4. video / music
+>> 返回抓取到的页面中的视频/音频，目前只支持微信公众号文章
+
+```php
+use Qifen\ConsoleSdk\Collection\Application;
+
+// 配置
+$config = [
+    'url' => 'http://api.xxx.com/', // 服务地址
+    'appId' => '123456790', // appId
+    'appSecret' => '123456790xxx',  // appSecret
+    'noticeUrl' => 'http://api.xxx.com/notice', // 回调地址
+];
+
+// 1.初始化
+$client = new Application($config);
+
+// 2.采集
+// 参数说明
+// $url 要采集的 URL 地址
+// $type 采集类型，默认 chrome
+// 默认
+$queueId = $client->collection('https://www.baidu.com');
+// 采集视频
+$queueId = $client->collection('https://www.baidu.com', 'video');
+```
