@@ -13,7 +13,9 @@ class Base
     protected $httpClient = null;
     protected $accessToken = null;
 
-    private $thoseTypesNeedToCheckExtraParams = ['screenshot', 'html2pdf', 'upload'];
+    protected $extraParams = [];
+
+    private $thoseTypesNeedToCheckFileSystemParams = ['screenshot', 'html2pdf', 'upload'];
 
     private $fileSystemParams = [
         'oss' => [
@@ -72,16 +74,20 @@ class Base
     }
 
     private function checkExtraParams(array $config) {
-        if (!in_array($this->type, $this->thoseTypesNeedToCheckExtraParams)) {
+        if (!empty($this->extraParams)) {
+            foreach ($this->extraParams as $extraParam) {
+                if (!array_key_exists($extraParam, $config)) {
+                    throw new InvalidArgumentException('config init error. ' . $extraParam . ' is required.');
+                }
+            }
+        }
+
+        if (!in_array($this->type, $this->thoseTypesNeedToCheckFileSystemParams)) {
             return;
         }
 
         if (!isset($config['saveType'])) {
             throw new InvalidArgumentException('config init error. saveType is required.');
-        }
-
-        if (!isset($config['noticeUrl'])) {
-            throw new InvalidArgumentException('config init error. noticeUrl is required.');
         }
 
         $type = $config['saveType'];

@@ -10,6 +10,7 @@ class Application extends Base
     use Utils;
 
     protected $type = 'html2pdf';
+    protected $extraParams = ['noticeUrl'];
 
     protected $displayHeaderFooter = false;
     protected $headerTemplate = '';

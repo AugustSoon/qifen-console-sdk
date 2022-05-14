@@ -14,6 +14,7 @@ trait Utils
 
         'screenshot' => 'screen-shot/create',
         'htmlToPdf' => 'html-to-pdf/create',
+        'collection' => 'collection/create',
 
         'search' => 'search/query',
         'searchCreate' => 'search/create',

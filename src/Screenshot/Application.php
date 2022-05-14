@@ -10,6 +10,7 @@ class Application extends Base
     use Utils;
 
     protected $type = 'screenshot';
+    protected $extraParams = ['noticeUrl'];
 
     protected $screenshotType = 'default';
     protected $selector = '';

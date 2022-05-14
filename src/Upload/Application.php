@@ -10,6 +10,7 @@ class Application extends Base
     use Utils;
 
     protected $type = 'upload';
+    protected $extraParams = ['noticeUrl'];
 
     /**
      * 获取 token
