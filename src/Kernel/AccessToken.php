@@ -21,6 +21,14 @@ class AccessToken
     const ACCESS_TOKEN_KEY = 'access_token';
     const REFRESH_TOKEN_KEY = 'refresh_token';
 
+    private function getTokenKey(string $type = 'access') {
+        if ($type == 'access') {
+            return self::ACCESS_TOKEN_KEY . '_' . $this->appId;
+        } else {
+            return self::REFRESH_TOKEN_KEY . '_' . $this->appId;
+        }
+    }
+
     public function __construct(string $url, string $appId, string $appSecret) {
         $this->appId = $appId;
         $this->appSecret = $appSecret;
@@ -36,7 +44,7 @@ class AccessToken
      * @throws BadResponseException
      */
     public function getToken() {
-        $token = $this->cache->getItem(self::ACCESS_TOKEN_KEY);
+        $token = $this->cache->getItem($this->getTokenKey());
 
         if ($token->isHit()) return $token->get();
 
@@ -52,7 +60,7 @@ class AccessToken
     public function refresh() {
         try {
             $refreshToken = null;
-            $refreshTokenItem = $this->cache->getItem(self::REFRESH_TOKEN_KEY);
+            $refreshTokenItem = $this->cache->getItem($this->getTokenKey('refresh'));
 
             if ($refreshTokenItem->isHit()) $refreshToken = $refreshTokenItem->get();
 
@@ -89,7 +97,7 @@ class AccessToken
                 $this->cache->save($refreshTokenItem);
             }
 
-            $tokenItem = $this->cache->getItem(self::ACCESS_TOKEN_KEY);
+            $tokenItem = $this->cache->getItem($this->getTokenKey());
             $tokenItem->set($token);
             $tokenItem->expiresAfter($data['expires_in'] ?? 7200);
             $this->cache->save($tokenItem);
