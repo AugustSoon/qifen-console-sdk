@@ -80,7 +80,23 @@ $client->updateSort($fields);
 // 指定索引
 $client->updateSort($fields, 'post');
 
-// 8.删除数据
+// 8.更新排序规则
+// 默认排序规则为 words, typo, proximity, attribute, sort, exactness
+// 可以随意调整上面规则对顺序
+// words-结果按匹配查询词的数量递减排序，首先返回包含所有查询词的文档
+// typo-结果按越来越多的错别字排序，首先返回匹配查询词且拼写错误较少的文档
+// proximity-结果按匹配的查询词之间的距离增加进行排序，返回查询词紧挨着出现且顺序与查询字符串相同的文档
+// attribute-结果根据属性排名顺序进行排序，首先返回在更重要的属性中包含查询词的文档（对应 updateSearchable 方法）
+// sort-结果根据查询时给定的排序参数进行排序
+// exactness-结果按匹配词与查询词的相似度排序，返回包含与最先查询的词条完全相同的词条的文档
+// 参考文档 https://docs.meilisearch.com/learn/core_concepts/relevancy.html#ranking-rules
+$fields = ['words', 'typo', 'proximity', 'sort', 'attribute', 'exactness'];
+// 默认索引
+$client->updateRanking($fields);
+// 指定索引
+$client->updateRanking($fields, 'post');
+
+// 9.删除数据
 // 数据格式为数组，即要删除的主键集合
 $ids = [1];
 // 默认索引
@@ -88,14 +104,14 @@ $client->del($ids);
 // 指定索引
 $client->del($ids, 'post');
 
-// 9.删除索引
+// 10.删除索引
 // 删除索引和索引内的全部内容，此操作不可撤销，谨慎使用
 // 默认索引
 $client->clear();
 // 指定索引
 $client->clear('post');
 
-// 10.搜索
+// 11.搜索
 // 参数说明
 // $keyword 查询关键词
 // $condition 查询条件，写法参考 https://docs.meilisearch.com/learn/advanced/filtering_and_faceted_search.html#using-filters

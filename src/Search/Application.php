@@ -103,6 +103,24 @@ class Application extends Base
     }
 
     /**
+     * 更新排序规则
+     *
+     * @param array $fields
+     * @param string|null $index
+     * @return array|false
+     * @throws BadResponseException
+     */
+    public function updateRanking(array $fields, string $index = null) {
+        foreach ($fields as $field) {
+            if (!in_array($field, ['words', 'typo', 'proximity', 'attribute', 'sort', 'exactness'])) {
+                return false;
+            }
+        }
+
+        return $this->updateAttr('Ranking', $fields, $index);
+    }
+
+    /**
      * 更新搜索字段
      *
      * @param array $fields
