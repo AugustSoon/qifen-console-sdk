@@ -331,3 +331,25 @@ $queueId = $client->collection('https://www.baidu.com');
 // 采集视频
 $queueId = $client->collection('https://www.baidu.com', 'video');
 ```
+
+### 鉴黄
+
+```php
+use Qifen\ConsoleSdk\Nsfw\Application;
+
+// 配置
+$config = [
+    'url' => 'http://api.xxx.com/', // 服务地址
+    'appId' => '123456790', // appId
+    'appSecret' => '123456790xxx',  // appSecret
+    'noticeUrl' => 'http://api.xxx.com/notice', // 回调地址
+];
+
+// 1.初始化
+$client = new Application($config);
+
+// 2.鉴黄
+$res = $client->identify('https://xxxxxxxx/.jpg');
+// 自定义id，不传则默认为0，主要用于回调时区分是哪张图片
+$res = $client->identify('https://xxxxxxxx/.jpg', 1);
+```

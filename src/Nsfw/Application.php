@@ -1,5 +1,6 @@
-
 <?php
+
+namespace Qifen\ConsoleSdk\Nsfw;
 
 use Qifen\ConsoleSdk\Kernel\Base;
 use Qifen\ConsoleSdk\Kernel\Traits\Utils;
@@ -20,7 +21,7 @@ class Application extends Base
      * @return bool
      * @throws BadResponseException
      */
-    public function nsfw(string $url, int $id = 0) {
+    public function identify(string $url, int $id = 0) {
         $json = [
             'id' => $id,
             'nsfw_url' => $url,
