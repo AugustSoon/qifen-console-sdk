@@ -25,6 +25,8 @@ trait Utils
         'searchSearchable' => 'search/update/searchable',
         'searchDel' => 'search/del',
         'searchClear' => 'search/clear',
+
+        'nsfw' => 'nsfw',
     ];
 
     /**
