@@ -27,6 +27,7 @@ trait Utils
         'searchClear' => 'search/clear',
 
         'nsfw' => 'nsfw',
+        'nsfwBatch' => 'nsfw_batch',
     ];
 
     /**
