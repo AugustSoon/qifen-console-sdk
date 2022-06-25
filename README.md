@@ -348,8 +348,18 @@ $config = [
 // 1.初始化
 $client = new Application($config);
 
-// 2.鉴黄
+// 2.鉴黄-单个
 $res = $client->identify('https://xxxxxxxx/.jpg');
 // 自定义id，不传则默认为0，主要用于回调时区分是哪张图片
 $res = $client->identify('https://xxxxxxxx/.jpg', 1);
+
+// 鉴黄-批量
+$list = [
+    ['url' => 'https://xxxxxxxx/.jpg'], // id 不传的情况下为 0
+    ['url' => 'https://xxxxxxxx/.jpg', 'id' => 1],
+    ['url' => 'https://xxxxxxxx/.jpg', 'id' => 2],
+    ['url' => 'https://xxxxxxxx/.jpg', 'id' => 3],
+    ['url' => 'https://xxxxxxxx/.jpg', 'id' => 4],
+];
+$res = $client->identifyBatch($list);
 ```
