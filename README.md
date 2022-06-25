@@ -353,7 +353,7 @@ $res = $client->identify('https://xxxxxxxx/.jpg');
 // 自定义id，不传则默认为0，主要用于回调时区分是哪张图片
 $res = $client->identify('https://xxxxxxxx/.jpg', 1);
 
-// 鉴黄-批量
+// 3.鉴黄-批量
 $list = [
     ['url' => 'https://xxxxxxxx/.jpg'], // id 不传的情况下为 0
     ['url' => 'https://xxxxxxxx/.jpg', 'id' => 1],
