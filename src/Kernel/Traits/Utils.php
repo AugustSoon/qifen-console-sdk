@@ -28,6 +28,8 @@ trait Utils
 
         'nsfw' => 'nsfw',
         'nsfwBatch' => 'nsfw_batch',
+
+        'correct' => 'correct',
     ];
 
     /**

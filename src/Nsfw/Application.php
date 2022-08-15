@@ -28,11 +28,11 @@ class Application extends Base
      * 鉴黄
      *
      * @param string $url
-     * @param int $id
+     * @param $id
      * @return bool
      * @throws BadResponseException
      */
-    public function identify(string $url, int $id = 0) {
+    public function identify(string $url, $id = 0) {
         if (!$this->validateURL($url)) {
             throw new InvalidArgumentException('url is invalid');
         }
