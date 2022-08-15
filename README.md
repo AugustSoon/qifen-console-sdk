@@ -363,3 +363,33 @@ $list = [
 ];
 $res = $client->identifyBatch($list);
 ```
+
+### 纠错
+
+```php
+use Qifen\ConsoleSdk\Correction\Application;
+
+// 配置
+$config = [
+    'url' => 'http://api.xxx.com/', // 服务地址
+    'appId' => '123456790', // appId
+    'appSecret' => '123456790xxx',  // appSecret
+    'noticeUrl' => 'http://api.xxx.com/notice', // 回调地址
+];
+
+// 1.初始化
+$client = new Application($config);
+
+// 2.纠错
+// 文本内容
+$content = [
+    '一只小鱼船浮在平净的河面上',
+    '我的家乡是有明的渔米之乡',
+    '这场比赛我甘败下风',
+    '这家伙还蛮格尽职守的'
+];
+// 默认ID，ID用于回调
+$client->correction($content);
+// 自定义ID
+$client->correction($content, 1);
+```
