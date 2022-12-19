@@ -393,3 +393,22 @@ $client->correction($content);
 // 自定义ID
 $client->correction($content, 1);
 ```
+
+### chatgpt AI
+
+```php
+use Qifen\ConsoleSdk\Chatgpt\Application;
+
+// 配置
+$config = [
+    'url' => 'http://api.xxx.com/', // 服务地址
+    'appId' => '123456790', // appId
+    'appSecret' => '123456790xxx',  // appSecret
+    'noticeUrl' => 'http://api.xxx.com/notice', // 回调地址
+];
+
+// 1.初始化
+$client = new Application($config);
+$client
+            ->sendMessage($carry, '写一遍关于下雨天的作文，不少于4000字');
+```
