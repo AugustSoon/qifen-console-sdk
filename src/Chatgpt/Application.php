@@ -11,7 +11,7 @@ class Application extends Base
 
     protected ?string $_conversation_id = null;
     protected ?string $_parent_message_id = null;
-    protected mixed $_server = null;
+    protected $_server = null; //兼容性问题
 
 
     /**
@@ -34,7 +34,7 @@ class Application extends Base
     /**
      * 设置服务账号
      */
-    public function setServer(mixed $server = null) {
+    public function setServer($server = null) {
         $this->_server = $server;
         return $this;
     }
