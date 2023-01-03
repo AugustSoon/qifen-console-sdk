@@ -9,15 +9,15 @@ class Application extends Base
 {
     use Utils;
 
-    protected ?string $_conversation_id = null;
-    protected ?string $_parent_message_id = null;
+    protected $_conversation_id = null;
+    protected $_parent_message_id = null;
     protected $_server = null; //兼容性问题
 
 
     /**
      * 设置消息ID
      */
-    public function setConversationId(?string $conversationId = null) {
+    public function setConversationId($conversationId = null) {
         $this->_conversation_id = $conversationId;
         return $this;
     }
@@ -25,7 +25,7 @@ class Application extends Base
     /**
      * 设置消息ID
      */
-    public function setParentMessageId(?string $parentMessageId = null) {
+    public function setParentMessageId($parentMessageId = null) {
         $this->_parent_message_id = $parentMessageId;
         return $this;
     }
