@@ -182,15 +182,21 @@ class Application extends Base
      * 发票提交
      *
      * @param array $data
-     * @return bool
+     * @return string
      * @throws InvalidArgumentException
      * @throws \Qifen\ConsoleSdk\Kernel\Exceptions\BadResponseException
      */
-    public function submit(array $data = []): bool {
+    public function submit(array $data = []): string {
         $json = $this->getParams($data);
 
         $res = $this->request($this->getApi('invoice'), compact('json'));
 
-        return $this->isSuccess($res);
+        if ($this->isSuccess($res)) {
+            $data = $res['data'] ?? [];
+
+            return $data['request_id'] ?? '';
+        }
+
+        return '';
     }
 }

@@ -437,10 +437,10 @@ $client->setPhone('手机号码');
 $client->setEmail('接收邮箱');
 
 // 3. 设置参数后提交
-$client->submit();
+$requestId = $client->submit();
 
 // 4. 直接提交
-$client->submit([
+$requestId = $client->submit([
     'name' => '纳税人姓名',
     'number' => '纳税人识别号',
     'address' => '公司注册地址',
