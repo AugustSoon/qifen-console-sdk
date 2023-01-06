@@ -9,6 +9,8 @@ class Application extends Base
 {
     use Utils;
 
+    protected $type = 'chatgpt';
+
     protected $_conversation_id = null;
     protected $_parent_message_id = null;
     protected $_server = null; //兼容性问题

@@ -17,6 +17,8 @@ trait Utils
         'collection' => 'collection/create',
         'chatgpt'   => 'chatgpt/create',
 
+        'invoice'   => 'invoice',
+
         'search' => 'search/query',
         'searchCreate' => 'search/create',
         'searchUpdate' => 'search/update',

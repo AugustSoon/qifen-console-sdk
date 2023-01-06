@@ -409,6 +409,45 @@ $config = [
 
 // 1.初始化
 $client = new Application($config);
-$client
-            ->sendMessage($carry, '写一遍关于下雨天的作文，不少于4000字');
+$client->sendMessage($carry, '写一遍关于下雨天的作文，不少于4000字');
+```
+
+### 发票提交
+
+```php
+use Qifen\ConsoleSdk\Invoice\Application;
+
+$config = [
+    'url' => 'http://api.xxx.com/', // 服务地址
+    'appId' => '123456790', // appId
+    'appSecret' => '123456790xxx',  // appSecret
+];
+
+// 1. 初始化
+$client = new Application($config);
+
+// 2. 设置参数
+$client->setName('纳税人姓名');
+$client->setNumber('纳税人识别号');
+$client->setAddress('公司注册地址');
+$client->setTel('公司电话');
+$client->setBank('开户行');
+$client->setAccount('银行账号');
+$client->setPhone('手机号码');
+$client->setEmail('接收邮箱');
+
+// 3. 设置参数后提交
+$client->submit();
+
+// 4. 直接提交
+$client->submit([
+    'name' => '纳税人姓名',
+    'number' => '纳税人识别号',
+    'address' => '公司注册地址',
+    'tel' => '公司电话',
+    'bank' => '开户行',
+    'account' => '银行账号',
+    'phone' => '手机号码',
+    'email' => '接收邮箱',
+]);
 ```
