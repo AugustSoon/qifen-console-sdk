@@ -24,6 +24,8 @@ class Application extends Base
     protected $isMobile = true;
     protected $hasTouch = true;
     protected $isLandscape = true;
+    protected $isPartition = false;
+    protected $partitionCount = 0;
 
     public function setNoticeUrl(string $url) {
         $this->setConfigByKey('noticeUrl', $url);
@@ -97,6 +99,16 @@ class Application extends Base
         return $this;
     }
 
+    public function setPartition(bool $flag){
+        $this->isPartition = $flag;
+        return $this;
+    }
+
+    public function setPartitionCount(int $flag){
+        $this->partitionCount = $flag;
+        return $this;
+    }
+
     /**
      * 截图
      *
@@ -130,6 +142,8 @@ class Application extends Base
             'is_mobile' => $this->isMobile,
             'has_touch' => $this->hasTouch,
             'is_landscape' => $this->isLandscape,
+            'is_partition' => $this->isPartition,
+            'partition_count' => $this->partitionCount,
         ];
 
         if ($height > 0) $json['height'] = $height;
