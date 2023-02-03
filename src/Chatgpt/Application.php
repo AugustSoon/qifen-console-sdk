@@ -14,6 +14,7 @@ class Application extends Base
     protected $_conversation_id = null;
     protected $_parent_message_id = null;
     protected $_server = null; //兼容性问题
+    protected $_model = 'free';
 
 
     /**
@@ -41,6 +42,11 @@ class Application extends Base
         return $this;
     }
 
+    public function setModel($model = 'free'){
+        $this->_model = $model;
+        return $this;
+    }
+
     /**
      * 截图
      *
@@ -55,6 +61,7 @@ class Application extends Base
         $json = [
             'carry' => $carry,
             'subject' => $subject,
+            'model' => $this->_model,
             'notice_url' => $this->getConfig('noticeUrl'),
             'conversation_id' => $this->_conversation_id,
             'parent_message_id' => $this->_parent_message_id,
