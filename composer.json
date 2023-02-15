@@ -8,8 +8,8 @@
         }
     },
     "require": {
-        "php": ">=8.0",
-        "symfony/cache": "^6.0",
+        "php": ">=7.4",
+        "symfony/cache": "^5.4",
         "symfony/http-client": "^5.4"
     }
 }
