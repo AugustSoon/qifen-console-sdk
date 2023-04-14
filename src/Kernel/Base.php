@@ -135,7 +135,7 @@ class Base
     public function request(string $api, array $options, string $method = 'POST') {
         try {
             if (!isset($options['headers'])) $options['headers'] = [];
-            $options['headers']['Authorization'] = 'Bearer ' . $this->getAccessToken()->getToken();
+            $options['headers'][] = 'Authorization: Bearer ' . $this->getAccessToken()->getToken();
 
             return $this->httpClient->request($method, $api, $options)->toArray(false);
         } catch (\Throwable $exception) {

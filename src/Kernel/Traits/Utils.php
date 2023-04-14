@@ -16,6 +16,7 @@ trait Utils
         'htmlToPdf' => 'html-to-pdf/create',
         'collection' => 'collection/create',
         'chatgpt'   => 'chatgpt/create',
+        'la' => 'la',
 
         'invoice'   => 'invoice',
 
