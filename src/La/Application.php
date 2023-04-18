@@ -25,7 +25,7 @@ class Application extends Base
         return $this;
     }
 
-    public function setModel($model = 'free'){
+    public function setModel($model = 'R-ESRGAN 4x+ Anime6B'){
         $this->_model = $model;
         return $this;
     }
